@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QTabWidget *TabWidget = new QTabWidget;
     QWidget *LeaderTab = new QWidget;
-    QLabel *LeaderLabel = new QLabel("隊長:郭至峻\n組員1:郭至峻\n組員2:陳彥妤\n組員3");
+    QLabel *LeaderLabel = new QLabel("隊長:郭至峻\n組員1:郭至峻\n組員2:陳彥妤\n組員3:何睿軒");
     LeaderLabel->setStyleSheet("color: blue;");
     QVBoxLayout *LeaderLayout = new QVBoxLayout;
     LeaderLayout->addWidget(LeaderLabel);
