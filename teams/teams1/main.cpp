@@ -12,30 +12,31 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QTabWidget *TabWidget = new QTabWidget;
     QWidget *LeaderTab = new QWidget;
-    QLabel *LeaderLabel = new QLabel("隊長:郭至峻\n組員1:郭至峻\n組員2:\n組員3");
+    QLabel *LeaderLabel = new QLabel("隊長:郭至峻\n組員1:郭至峻\n組員2:陳彥妤\n組員3");
     LeaderLabel->setStyleSheet("color: blue;");
     QVBoxLayout *LeaderLayout = new QVBoxLayout;
     LeaderLayout->addWidget(LeaderLabel);
     LeaderTab->setLayout(LeaderLayout);
 
-    QWidget *member1Tab = new QWidget;
-    QLabel *member1Label = new QLabel("這是組員1頁面");
-    QPushButton *colorButton = new QPushButton("color select");
-    QVBoxLayout *member1Layout = new QVBoxLayout;
-    member1Layout->addWidget(member1Label);
-    member1Layout->addWidget(colorButton);
-    member1Tab->setLayout(member1Layout);
+   QWidget *member2Tab = new QWidget;
+    QLabel *member2Label = new QLabel("這是組員2頁面");
+    QPushButton *styleButton = new QPushButton("Front select");
+    QVBoxLayout *member2Layout = new QVBoxLayout;
+    member2Layout->addWidget(member2Label);
+    member2Layout->addWidget(styleButton);
+    member2Tab->setLayout(member2Layout);
 
 
-    QObject::connect(colorButton, &QPushButton::clicked, [=]() {
-        QColor color = QColorDialog::getColor(Qt::white, nullptr, "選擇文字顏色");
-        if (color.isValid()) {
-            QString colorName = color.name();
-            LeaderLabel->setStyleSheet(QString("color: %1;").arg(colorName));
+    QObject::connect(styleButton, &QPushButton::clicked, [=]() {
+        bool ok;
+        QFont font = QFontDialog::getFont(&ok, leaderLabel->font(), nullptr, "選擇字體");
+        if (ok) {
+            leaderLabel->setFont(font);
         }
     });
     TabWidget->addTab(LeaderTab, "隊長");
     TabWidget->addTab(member1Tab, "組員1");
+    TabWidget->addTab(member1Tab, "組員2");
 
 
     TabWidget->setWindowTitle("example");
