@@ -10,17 +10,16 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    QTabWidget *TabWidget = new QTabWidget;
-    QWidget *LeaderTab = new QWidget;
-    QLabel *LeaderLabel = new QLabel("隊長:郭至峻\n組員1:郭至峻\n組員2:陳彥妤\n組員3:何睿軒");
-    LeaderLabel->setStyleSheet("color: blue;");
-    QVBoxLayout *LeaderLayout = new QVBoxLayout;
-    LeaderLayout->addWidget(LeaderLabel);
-    LeaderTab->setLayout(LeaderLayout);
+    QTabWidget *tabWidget = new QTabWidget;
+    QWidget *leaderTab = new QWidget;
+    QLabel *leaderLabel = new QLabel("組長:郭至峻\n組員1:郭至峻\n組員2:陳彥妤\n組員3:何睿軒");
+    leaderLabel->setStyleSheet("color: black;");
+    QVBoxLayout *leaderLayout = new QVBoxLayout;
+    leaderLayout->addWidget(leaderLabel);
+    leaderTab->setLayout(leaderLayout);
 
-    
     QWidget *member1Tab = new QWidget;
-    QLabel *member1Label = new QLabel("這是組員1頁面");
+    QLabel *member1Label = new QLabel("Page:組員1");
     QPushButton *colorButton = new QPushButton("color select");
     QVBoxLayout *member1Layout = new QVBoxLayout;
     member1Layout->addWidget(member1Label);
@@ -37,8 +36,8 @@ int main(int argc, char *argv[]) {
     });
 
 
-   QWidget *member2Tab = new QWidget;
-    QLabel *member2Label = new QLabel("這是組員2頁面");
+    QWidget *member2Tab = new QWidget;
+    QLabel *member2Label = new QLabel("Page:組員2");
     QPushButton *styleButton = new QPushButton("Front select");
     QVBoxLayout *member2Layout = new QVBoxLayout;
     member2Layout->addWidget(member2Label);
@@ -53,8 +52,9 @@ int main(int argc, char *argv[]) {
             leaderLabel->setFont(font);
         }
     });
+
     QWidget *member3Tab = new QWidget;
-    QLabel *member3Label = new QLabel("這是組員3頁面");
+    QLabel *member3Label = new QLabel("Page:組員3");
     QPushButton *fileButton = new QPushButton("File select");
     QVBoxLayout *member3Layout = new QVBoxLayout;
     member3Layout->addWidget(member3Label);
@@ -70,13 +70,14 @@ int main(int argc, char *argv[]) {
     });
 
 
-    TabWidget->addTab(LeaderTab, "隊長");
-    TabWidget->addTab(member1Tab, "組員1");
-    TabWidget->addTab(member1Tab, "組員2");
-    TabWidget->addTab(member3Tab, "組員3");
+    tabWidget->addTab(leaderTab, "隊長");
+    tabWidget->addTab(member1Tab, "組員1");
+    tabWidget->addTab(member2Tab, "組員2");
+    tabWidget->addTab(member3Tab, "組員3");
 
-    TabWidget->setWindowTitle("example");
-    TabWidget->resize(400, 300);
-    TabWidget->show();
+    tabWidget->setWindowTitle("example");
+    tabWidget->resize(400, 300);
+    tabWidget->show();
+
     return app.exec();
 }
